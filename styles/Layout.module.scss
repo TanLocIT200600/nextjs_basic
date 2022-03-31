@@ -1,0 +1,11 @@
+.layout{
+  display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.main__body{
+  min-height: 90vh;
+  width: 100%;
+}

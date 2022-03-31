@@ -1,0 +1,29 @@
+.title {
+  text-align: center;
+  font-size: 30px;
+  line-height: 70px;
+  height: 70px;
+  width: 300px;
+  margin: auto;
+  font-weight: 700;
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 30%;
+    height: 3px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    background-color: #0167f3;
+  }
+}
+
+.list__product {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  justify-content: space-between;
+  margin-top: 3%;
+}
