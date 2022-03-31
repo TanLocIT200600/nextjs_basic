@@ -22,8 +22,9 @@
 
 .list__product {
   display: flex;
-  width: 90%;
+  width: 80%;
   margin: auto;
-  justify-content: space-between;
+  // justify-content: space-between;
   margin-top: 3%;
+  flex-wrap: wrap;
 }

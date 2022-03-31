@@ -1,29 +1,49 @@
-import React from "react";
+/* eslint-disable @next/next/no-img-element */
+import React, { useEffect, useState } from "react";
 import styles from "../styles/CartItem.module.scss";
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { ProductServices } from "../services/productServices";
+import { IProduct } from "../models/products";
 
 const CartItem = () => {
+
+  useEffect(() => {
+    ProductServices().then(res => setProducts(res.data))
+  }, [])
+
+
+  const [products, setProducts] = useState<IProduct[]>([] || <p>loading ...</p>)
+  console.log("Products", products);
+
   return (
-    <div className={styles.background}>
-      <Image
-        src="/images/product-1.jpg"
-        alt="Product 1"
-        width="300"
-        height="300"
-        className={styles.background__image}
-      />
-      <div className={styles.background__description}>
-        <span className={styles.background__description__title}>Watches</span>
-        <p className={styles.background__description__desc}>Xiaomi Mi Band 5</p>
-        <h5 className={styles.background__description__price}>$199.00</h5>
-      </div>
-      <button className={styles.background__addToCart}>
-        <FontAwesomeIcon icon={faCartPlus} />
-        Add To Cart
-      </button>
-    </div>
+    <>
+      {products.map((item, index) => {
+        return (
+          <div className={styles.background} key={index}>
+            <div className={styles.background__image}>
+              <img
+                className={styles.background__image__logo}
+                src={item.image}
+                alt="Product 1"
+              />
+            </div>
+
+            <div className={styles.background__description}>
+              <span className={styles.background__description__title}>{item.category}</span>
+              <p className={styles.background__description__desc}>{item.title.length > 50 ? `${item.title.substring(0, 50)}...` : item.title}</p>
+              <h5 className={styles.background__description__price}>$ {item.price}</h5>
+              <button className={styles.background__addToCart}>
+                <FontAwesomeIcon icon={faCartPlus} />
+                Add To Cart
+              </button>
+            </div>
+
+          </div>
+        )
+      })}
+    </>
+
   );
 };
 

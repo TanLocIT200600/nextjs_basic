@@ -1,9 +1,12 @@
-import type { NextPage } from 'next'
+import axios from 'axios'
 import Head from 'next/head'
+import { useEffect, useState } from 'react'
 import CartItem from '../components/CartItem'
 import styles from '../styles/Home.module.scss'
+import { ProductServices } from '../services/productServices';
 
-const Home: NextPage = () => {
+const Home = () => {
+
   return (
     <div className={styles.container}>
       <Head>
@@ -18,14 +21,12 @@ const Home: NextPage = () => {
         </h1>
         <div className={styles.list__product}>
           <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
         </div>
 
       </main>
     </div>
   )
 }
+
 
 export default Home
