@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.js", "**/*.js", "**/*.jsx", "redux/cart.slice.js", "redux/store.js", "pages/cart.jsx", "pages/index.jsx", "pages/[id].jsx", "pages/_app.jsx", "pages/products/index.jsx", "services/productServices.js", "components/header.jsx", "components/layout.jsx", "components/footer.jsx", "components/CartItem.jsx"],
   "exclude": ["node_modules"]
 }

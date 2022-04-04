@@ -5,8 +5,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from 'react-redux';
+import Link from 'next/link';
 
 const Header = () => {
+
+  const cart = useSelector(state => state.cart);
+  const getItemCount = () => {
+    return cart.reduce((accumulator, item) => accumulator + item.quantity, 0);
+  }
+
   return (
     <div className={styles.container}>
       <Image src="/images/logo.png" alt="" width="127" height="40" />
@@ -16,12 +24,14 @@ const Header = () => {
         <li className={styles.menu__item}>About Us</li>
         <li className={styles.menu__item}>Contact Us</li>
       </ul>
-      <div className={styles.cart}>
-        <FontAwesomeIcon
-          icon={faCartShopping}
-        />
-        <p className={styles.cart__total}>2</p>
-      </div>
+      <Link href="/cart">
+        <a className={styles.cart}>
+          <FontAwesomeIcon
+            icon={faCartShopping}
+          />
+          <p className={styles.cart__total}>{getItemCount()}</p>
+        </a>
+      </Link>
 
     </div>
   )

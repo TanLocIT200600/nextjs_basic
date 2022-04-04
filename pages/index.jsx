@@ -1,9 +1,7 @@
-import axios from 'axios'
+
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
-import CartItem from '../components/CartItem'
 import styles from '../styles/Home.module.scss'
-import { ProductServices } from '../services/productServices';
+import Products from './products'
 
 const Home = () => {
 
@@ -20,7 +18,7 @@ const Home = () => {
           Trending Product
         </h1>
         <div className={styles.list__product}>
-          <CartItem />
+          <Products />
         </div>
 
       </main>
