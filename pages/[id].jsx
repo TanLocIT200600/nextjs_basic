@@ -1,10 +1,10 @@
 
 import React from 'react'
-import { ProductDetails } from '../services/productServices';
+import { ProductDetails, ProductServices } from '../services/productServices';
 
 export const getStaticPaths = async () => {
-  const res = await fetch('https://fakestoreapi.com/products');
-  const data = await res.json();
+  const res = await ProductServices();
+  const data = await res.data;
 
   const paths = data.map((data) => {
     return {

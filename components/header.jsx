@@ -46,21 +46,30 @@ const Header = () => {
     <div className={styles.container}>
       <Image src="/images/logo.png" alt="" width="127" height="40" />
       <ul className={styles.menu__list}>
-        <li className={styles.menu__item}>Home</li>
         <li className={styles.menu__item}>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+        </li>
+        <li className={styles.menu__item}>
+          <Link href="/category">
+            <a>Category</a>
+          </Link>
+        </li>
+        {/* <li className={styles.menu__item}>
           <button onClick={handleOnCLick}>Category</button>
-          {state.open && (
-            <div className={styles.dropdown}>
-              <ul>
+          <div>
+            {state.open && (
+              <ul className={styles.list__dropdown}>
                 {categoryList.map((item, index) => {
                   return (
                     <li key={index}>{item}</li>
                   )
                 })}
               </ul>
-            </div>
-          )}
-        </li>
+            )}
+          </div>
+        </li> */}
         <li className={styles.menu__item}>About Us</li>
         <li className={styles.menu__item}>Contact Us</li>
       </ul>
