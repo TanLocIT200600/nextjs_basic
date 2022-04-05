@@ -25,9 +25,9 @@
     "next": "latest",
     "prop-types": "latest",
     "react": "latest",
-    "react-bootstrap": "^2.2.2",
     "react-dom": "latest",
     "react-redux": "^7.2.8",
+    "reactstrap": "^9.0.1",
     "sass": "^1.49.10"
   },
   "devDependencies": {

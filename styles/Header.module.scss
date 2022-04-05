@@ -39,6 +39,21 @@
 .menu__item:hover:after {
   width: 100%;
 }
+
+.button__dropdown {
+  background: #6c757d00;
+  color: #333;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+}
+
 .cart {
   width: 40px;
   height: 40px;

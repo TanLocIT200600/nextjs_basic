@@ -18,7 +18,9 @@ const Products = () => {
   }, [])
 
 
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
+  const menuItem = [... new Set(products.map(val => val.category))];
+  console.log("menuItem", menuItem);
 
   return (
     <>

@@ -1,8 +1,8 @@
 import React from 'react';
-import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from '../styles/CartPage.module.scss';
 import { incrementQuantity, decrementQuantity, removeFromCart } from '../redux/cart.slice';
+import Link from 'next/link';
 
 const Cart = () => {
 
@@ -19,7 +19,10 @@ const Cart = () => {
   return (
     <div className={styles.container}>
       {cart.length === 0 ? (
-        <h1>Your Cart is Empty!</h1>
+        <>
+          <h1>Your Cart is Empty!</h1>
+          <Link href="/"><a>Buy Now</a></Link>
+        </>
       ) : (
         <>
           <div className={styles.header}>
@@ -34,7 +37,7 @@ const Cart = () => {
             // eslint-disable-next-line react/jsx-key
             <div className={styles.body}>
               <div className={styles.image}>
-                <Image src={item.image} height="90" width="65" />
+                <img src={item.image} height="90" width="65" />
               </div>
               <p>{item.title}</p>
               <p>$ {item.price}</p>
