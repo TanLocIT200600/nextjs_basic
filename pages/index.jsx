@@ -1,10 +1,20 @@
-
+import { useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 import Products from './products'
+import { ProductServices, GetProductsLimit } from '../services/productServices.js'
 
-const Home = () => {
-
+export async function getServerSideProps(productsPerPage) {
+  const res = await ProductServices();
+  return {
+    props: {
+      products: res.data,
+    },
+  }
+}
+const Home = (props) => {
+  // const [productsPerPage] = useState(5);
+  console.log(props);
   return (
     <div className={styles.container}>
       <Head>
@@ -18,7 +28,7 @@ const Home = () => {
           Trending Product
         </h1>
         <div className={styles.list__product}>
-          <Products />
+          <Products products={props.products} />
         </div>
 
       </main>

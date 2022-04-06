@@ -18,8 +18,16 @@ export const ProductServices = async () => {
 };
 
 export const ProductDetails = async (id) => {
-  const res = await fetch('https://fakestoreapi.com/products/' + id);
+  const res = await axios.get('https://fakestoreapi.com/products/' + id);
   const data = await res.json();
+  return {
+    data
+  }
+};
+
+export const GetProductsLimit = async (amount) => {
+  const res = await axios.get(`https://fakestoreapi.com/products?limit=${amount}`);
+  const data = await res.data;
   return {
     data
   }
