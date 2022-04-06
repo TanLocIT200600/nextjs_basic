@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react';
 import { ProductServices } from '../../services/productServices';
@@ -9,6 +10,7 @@ import styles from '../../styles/Products.module.scss'
 const Category = () => {
 
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filteredProduct, setfilteredProduct] = useState(null);
   useEffect(() => {
     ProductServices().then(res => setFilteredProducts(res.data))
   }, [])
@@ -18,7 +20,7 @@ const Category = () => {
     const newListProduct = filteredProducts.filter((newItem) => {
       return newItem.category === cate;
     });
-    setFilteredProducts(newListProduct);
+    setfilteredProduct(newListProduct);
     console.log("newListProduct", newListProduct);
   }
 
@@ -36,7 +38,7 @@ const Category = () => {
         })
       }
 
-      {filteredProducts?.map((products) => {
+      {filteredProduct?.map((products) => {
         return (
           <div className={styles.background} key={products.id}>
             <Link href={'/' + products.id}>

@@ -32,6 +32,12 @@
     font-weight: 500;
     font-size: 18px;
   }
+
+  & a {
+    width: 100px;
+    height: 50px;
+    display: block;
+  }
 }
 .menu__item::after {
   content: "";
