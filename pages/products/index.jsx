@@ -7,37 +7,46 @@ import { addToCart } from "../../redux/cart.slice";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 import Pagination from "../../components/pagination/Pagination";
-
+import { fetchProductByLimit } from '../../services/productServices.js';
 
 
 const Products = (props) => {
   const dispatch = useDispatch();
-  const { products } = props;
-
+  const [products, setProducts] = useState([]);
+  const [value, setValue] = useState('')
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(5);
-  // Get current posts
+  const [productsPerPage, setProductsPerPage] = useState(5);
   const indexOfLastPost = currentPage * productsPerPage;
   const indexOfFirstPost = indexOfLastPost - productsPerPage;
   const currentProducts = products.slice(indexOfFirstPost, indexOfLastPost);
-  // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const handleOnCLick = (number) => {
+    fetchProductByLimit(number).then(res => {
+      setProductsPerPage(res.data)
+      setProducts(res.data)
+    });
+  }
+
+  console.log(value);
+  console.log("currentProducts", currentProducts);
 
   return (
     <>
       <div className={styles.filterProducts}>
         <label htmlFor="amountProducts">Number products per page: </label>
 
-        <select id="amountProducts">
-          <option value="5" selected>5</option>
+        <select onChange={(e) => {
+          setValue(e.target.value)
+          handleOnCLick(e.target.value)
+        }}>
+          <option selected value="5">5</option>
           <option value="10">10</option>
           <option value="20">20</option>
         </select>
-        {/* <input type="text" value={filter.query} placeholder="Filter products" onChange={handleChangeFilter} /> */}
       </div>
 
-      {currentProducts?.map((products) => {
+      {products?.map((products) => {
         return (
           <div className={styles.background} key={products.id}>
             <Link href={"/" + products.id}>

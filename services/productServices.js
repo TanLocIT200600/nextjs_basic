@@ -17,6 +17,14 @@ export const ProductServices = async () => {
   }
 };
 
+export const fetchProductByLimit = async (number) => {
+  const res = await axios.get(`https://fakestoreapi.com/products?limit=${number}`);
+  const data = await res.data;
+  return {
+    data
+  }
+}
+
 export const ProductDetails = async (id) => {
   const res = await axios.get('https://fakestoreapi.com/products/' + id);
   const data = await res.json();
@@ -25,9 +33,17 @@ export const ProductDetails = async (id) => {
   }
 };
 
-export const GetProductsLimit = async (amount) => {
-  const res = await axios.get(`https://fakestoreapi.com/products?limit=${amount}`);
-  const data = await res.data;
+export const FetCategory = async () => {
+  const res = await fetch('https://fakestoreapi.com/products/categories');
+  const data = res.data;
+  return {
+    data
+  }
+};
+
+export const FetchProductByCategory = async (category) => {
+  const res = await axios.get(`https://fakestoreapi.com/products/category/${category}`);
+  const data = res.data;
   return {
     data
   }

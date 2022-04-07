@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 import Products from './products'
-import { ProductServices, GetProductsLimit } from '../services/productServices.js'
+import { ProductServices, fetchProductByLimit } from '../services/productServices.js'
 
 export async function getServerSideProps(productsPerPage) {
   const res = await ProductServices();
